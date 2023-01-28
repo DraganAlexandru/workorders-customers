@@ -1,0 +1,38 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+enum AllowedType {
+  Install
+  Service
+}
+
+type Customer {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  address: String!
+  email: String!
+  phone_number: String!
+}
+
+type WorkOrder {
+  id: ID!
+  type: AllowedType!
+  schedule: String!
+  customer: Customer
+}
+
+type Query {
+  workOrders: [WorkOrder]!
+  workOrder(workOrderId: ID!): WorkOrder!
+}
+
+type Mutation {
+  createWorkOrder(
+    type: AllowedType!
+    schedule: String!
+    customerId: ID!
+  ): WorkOrder
+}

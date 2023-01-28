@@ -86,3 +86,17 @@ mutation newWorkOrder {
 }
 
 ```
+
+Mutation to create a new customer
+
+```buildoutcfg
+mutation newCustomer{
+  createCustomer(first_name: "Mike", last_name: "Doyle", address: "Second Street", email: "mike@doyle.com", phone_number: "777") {
+    id
+    first_name
+    last_name
+    address
+    email
+    phone_number
+}
+```

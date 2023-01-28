@@ -35,4 +35,11 @@ type Mutation {
     schedule: String!
     customerId: ID!
   ): WorkOrder
+  createCustomer(
+    first_name: String!
+    last_name: String!
+    address: String!
+    email: String!
+    phone_number: String!
+  ): Customer
 }

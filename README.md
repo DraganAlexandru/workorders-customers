@@ -1,11 +1,13 @@
 # Work Orders Customers GraphQL Flask
 
 ## **Implemented the functionality of**
+
 - create new work orders
 - retrieve a work order by ID
 - retrieve all work orders
 
 ## **Installation**
+
 Clone the repo
 
 `git clone`
@@ -31,6 +33,45 @@ Start the server
 `flask run`
 
 Open the GraphQL PlayGround by visiting http://127.0.0.1:5000/graphql
+
+Mutation to create a new customer
+
+```buildoutcfg
+mutation newCustomer {
+  createCustomer(
+    first_name: "Mike"
+    last_name: "Doyle"
+    address: "Fisrt Street"
+    email: "mike@doyle.com"
+    phone_number: "111"
+  ) {
+    id
+    first_name
+    last_name
+    address
+    email
+    phone_number
+  }
+}
+```
+
+Mutation to create a new work order
+
+```buildoutcfg
+mutation newWorkOrder {
+  createWorkOrder(type: Service, schedule: "tomorrow", customerId: "1") {
+    id
+    schedule
+    customer {
+      first_name
+      last_name
+      email
+      phone_number
+      address
+    }
+  }
+}
+```
 
 Query to retrieve all the available work orders:
 
@@ -65,38 +106,5 @@ query fetchWorkOrder {
       phone_number
     } 
   }
-}
-```
-
-Mutation to create a new work order
-
-```buildoutcfg
-mutation newWorkOrder {
-  createWorkOrder(type: Service, schedule: "tomorrow", customerId: "3") {
-    id
-    schedule
-    customer {
-      first_name
-      last_name
-      email
-      phone_number
-      address
-    }
-  }
-}
-
-```
-
-Mutation to create a new customer
-
-```buildoutcfg
-mutation newCustomer{
-  createCustomer(first_name: "Mike", last_name: "Doyle", address: "Second Street", email: "mike@doyle.com", phone_number: "777") {
-    id
-    first_name
-    last_name
-    address
-    email
-    phone_number
 }
 ```

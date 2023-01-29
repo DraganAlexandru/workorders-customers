@@ -1,6 +1,6 @@
 from enum import Enum
 
-from sqlalchemy.orm import backref
+from sqlalchemy.orm import backref, relationship
 
 from api import db
 
@@ -14,6 +14,7 @@ class Customer(db.Model):
     address = db.Column(db.String)
     email = db.Column(db.String)
     phone_number = db.Column(db.String)
+    work_orders = relationship("WorkOrder", back_populates='customer')
 
     def to_dict(self):
         return {
@@ -38,7 +39,7 @@ class WorkOrder(db.Model):
     type = db.Column(db.Enum(AllowedType))
     schedule = db.Column(db.String)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
-    customer = db.relationship("Customer", backref=backref("customer", uselist=False))
+    customer = relationship("Customer", back_populates='work_orders')
 
     def to_dict(self):
         return {

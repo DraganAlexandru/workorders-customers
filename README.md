@@ -10,7 +10,7 @@
 
 Clone the repo
 
-`git clone`
+`git clone https://github.com/DraganAlexandru/workorders-customers.git`
 
 Navigata to the root
 
@@ -108,3 +108,7 @@ query fetchWorkOrder {
   }
 }
 ```
+
+## **Run tests - make sure the application is running**
+
+`python3 tests.py`

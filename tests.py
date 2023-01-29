@@ -86,11 +86,10 @@ class WorkOrderResolverTestCase(unittest.TestCase):
             }
         """
 
-        headers = {'content-type': 'application/json'}
         response = requests.get(
             self.endpoint_url,
             json={'query': query},
-            headers=headers
+            headers=self.headers
         )
         self.assertEqual(response.status_code, 200)
 
